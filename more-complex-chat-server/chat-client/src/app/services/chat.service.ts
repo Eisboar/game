@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 
-
-@Injectable()
-export class ProvidersChatProvider {
-
+@Injectable({
+  providedIn: 'root'
+})
+export class ChatService {
 
   constructor(private socket: Socket) {
 

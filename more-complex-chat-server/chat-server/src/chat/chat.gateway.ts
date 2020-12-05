@@ -1,4 +1,6 @@
+import { Logger } from '@nestjs/common';
 import { WebSocketGateway, WebSocketServer, SubscribeMessage, OnGatewayConnection, OnGatewayDisconnect } from '@nestjs/websockets';
+
 
 @WebSocketGateway()
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
@@ -27,7 +29,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
 
     @SubscribeMessage('chat')
-    async onChat(client, message) {
+    async onChat(client, message: string) {
+        Logger.log("hey");
         client.broadcast.emit('chat', message);
     }
 

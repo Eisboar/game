@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProvidersChatProvider } from '../../providers/providers-chat/providers-chat';
+import { ChatService } from '../services/chat.service';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
 
@@ -11,7 +12,7 @@ export class HomePage implements OnInit {
   public message: string = '';
   public messages: string[] = [];
 
-  constructor(private chatService: ProvidersChatProvider) {
+  constructor(private chatService: ChatService) {
 
   }
 
