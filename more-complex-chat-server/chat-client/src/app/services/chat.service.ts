@@ -10,7 +10,7 @@ export class ChatService {
 
   }
 
-  sendChat(message) {
+  sendChat(message: string) {
     this.socket.emit('chat', message);
   }
 

@@ -8,8 +8,8 @@ import { ChatService } from '../services/chat.service';
 })
 export class HomePage implements OnInit {
 
-  public users: number = 0;
-  public message: string = '';
+  public users = 0;
+  public message = '';
   public messages: string[] = [];
 
   constructor(private chatService: ChatService) {
