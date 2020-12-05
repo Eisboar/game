@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SocketIoConfig } from 'ngx-socket-io/src/config/socket-io.config';
 import { SocketIoModule } from 'ngx-socket-io/src/socket-io.module';
+import { ProvidersChatProvider } from '../providers/providers-chat/providers-chat';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -19,7 +20,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +31,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
-  ]
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ProvidersChatProvider,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
